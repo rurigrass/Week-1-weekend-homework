@@ -21,7 +21,7 @@ end
 
 #6
 def increase_pets_sold(petssold, sold)
-  return petssold[:admin][:pets_sold] += sold.to_i
+  return petssold[:admin][:pets_sold] += sold
 end
 
 #7
@@ -94,7 +94,16 @@ def customer_can_afford_pet(customer, newPet)
 end
 
 #20
+# def sell_pet_to_customer(hash, pet, customer)
+#   customer[:pets] << pet
+#   return customer[:pets].count
+# end
 def sell_pet_to_customer(hash, pet, customer)
-  customer[:pets] << pet
-  return customer[:pets].count
+  add_pet_to_customer(customer, pet)
+  increase_pets_sold(hash, 1) #interger too specific why not pet.count.to_i?
+  remove_customer_cash(customer, 900)
+  add_or_remove_cash(hash, 900)
 end
+
+#21
+# def sell_pet_to_customer_non(hash, pet, customer)
