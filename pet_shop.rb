@@ -29,7 +29,7 @@ def stock_count(stock)
   return stock[:pets].length
 end
 
-#8
+#8 #9
 def pets_by_breed(hash, breed)
   total_breed = []
     for pets in hash[:pets]
@@ -38,7 +38,7 @@ def pets_by_breed(hash, breed)
   return total_breed
 end
 
-#9
+#10 #11
 def find_pet_by_name(hash, name)
   for pets in hash[:pets]
     if (pets[:name] == name)
@@ -46,4 +46,55 @@ def find_pet_by_name(hash, name)
     end
   end
   return nil
+end
+
+#12
+def remove_pet_by_name(hash, petToBeRemoved)
+ # pet = find_pet_by_name(hash, petToBeRemoved)
+ # hash[:pets].delete(pet)
+ hash[:pets].delete(find_pet_by_name(hash, petToBeRemoved))
+end
+
+#13
+def add_pet_to_stock(hash, newPet)
+  # newnumber = hash[:pets] << newPet
+  # return newnumber.length
+  hash[:pets] << newPet
+  return hash[:pets].length
+end
+
+
+#14
+def customer_cash(customer)
+  return customer[:cash]
+end
+
+#15
+def remove_customer_cash(customer, cash)
+  return customer[:cash] -= cash
+end
+
+#16
+def customer_pet_count(customer)
+  return customer[:pets].count
+end
+
+#17
+def add_pet_to_customer(customer, newPet)
+  customer[:pets] << newPet
+  return customer[:pets].count
+end
+
+#18, #19
+def customer_can_afford_pet(customer, newPet)
+  if newPet[:price] > customer[:cash]
+    return false
+  end
+  return true #does this go after end?
+end
+
+#20
+def sell_pet_to_customer(hash, pet, customer)
+  customer[:pets] << pet
+  return customer[:pets].count
 end
